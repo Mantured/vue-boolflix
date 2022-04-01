@@ -2,7 +2,7 @@
   <div id="app">
     <Header @searchInput="getNewSearch" />
     <!-- <div v-for="(film, index) in filmsList" :key="index">{{ film.title }}</div> -->
-    <FilmsList :filmsList="filmsList" />
+    <FilmsList :films="filmsList" />
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
   data: function () {
     return {
       //moviesApi: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=en-US&page=1&query=`,
-      filmsList: "",
+      filmsList: [],
       searchToInput: "",
     };
   },

@@ -1,21 +1,30 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="(film, index) in filmsList" :key="index">
-        {{ film.title }} - {{ film.original_title }} - {{ film.vote_average }} -
-        {{ film.original_language }}
+  <div class="container-fluid">
+    <ul class="row">
+      <li class="col" v-for="(film, index) in films" :key="index">
+        <!-- {{ film.title }} - {{ film.original_title }} - {{ film.vote_average }} -
+        {{ film.original_language }} -->
+        <ProductCover :info="film" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import ProductCover from "./ProductCover.vue";
 export default {
   name: "FilmsList",
+  components: {
+    ProductCover,
+  },
   props: {
-    filmsList: String || Object, //problemi di comunicazione
+    films: Array, //problemi di comunicazione //risolto
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+li {
+  list-style-type: none;
+}
+</style>
