@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @searchInput="filmQuery" />
 
     <FilmsList />
   </div>
@@ -19,7 +19,8 @@ export default {
   },
   data: function () {
     return {
-      filmsList: [],
+      filmsList: "",
+      searchToInput: "",
     };
   },
   created: function () {
@@ -28,13 +29,24 @@ export default {
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=en-US&page=1&query='adult'`
       )
       .then((result) => {
-        console.log(result.data.results);
+        this.filmsList = result.data.results;
+        console.log(this.filmsList);
+      })
+      .catch((error) => {
+        console.log(error);
       });
+  },
+  methods: {
+    filmQuery(query) {
+      this.searchToInput = query;
+      console.warn(this.searchToInput);
+    },
   },
 };
 </script>
 
 <style lang="scss">
+@import "./assets/scss/style.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
