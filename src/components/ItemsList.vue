@@ -1,27 +1,30 @@
 <template>
   <div class="container-fluid">
-    <div v-if="films">
+    <!-- <div v-if="films || series"> -->
+    <div>
       <ul class="row">
-        <li class="col" v-for="(film, index) in films" :key="index">
+        <li class="col" v-for="(item, index) in films || series" :key="index">
+          <!-- <li class="col" v-for="(item, index) in series" :key="index"> -->
           <!-- {{ film.title }} - {{ film.original_title }} - {{ film.vote_average }} -
         {{ film.original_language }} -->
-          <ProductCover :info="film" />
+          <ProductCover :info="item" />
         </li>
       </ul>
     </div>
-    <h1 v-else>Nessun Film trovato</h1>
+    <!-- <h1>Nessun Film trovato</h1> -->
   </div>
 </template>
 
 <script>
 import ProductCover from "./ProductCover.vue";
 export default {
-  name: "FilmsList",
+  name: "ItemsList",
   components: {
     ProductCover,
   },
   props: {
     films: Array, //problemi di comunicazione //risolto
+    series: Array,
   },
 };
 </script>
