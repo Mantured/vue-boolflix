@@ -1,12 +1,15 @@
 <template>
   <div class="container-fluid">
-    <ul class="row">
-      <li class="col" v-for="(film, index) in films" :key="index">
-        <!-- {{ film.title }} - {{ film.original_title }} - {{ film.vote_average }} -
+    <div v-if="films">
+      <ul class="row">
+        <li class="col" v-for="(film, index) in films" :key="index">
+          <!-- {{ film.title }} - {{ film.original_title }} - {{ film.vote_average }} -
         {{ film.original_language }} -->
-        <ProductCover :info="film" />
-      </li>
-    </ul>
+          <ProductCover :info="film" />
+        </li>
+      </ul>
+    </div>
+    <h1 v-else>Nessun Film trovato</h1>
   </div>
 </template>
 

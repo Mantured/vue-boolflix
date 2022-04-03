@@ -7,6 +7,7 @@
 </template>
 
 <script>
+//flag icons
 import axios from "axios";
 import FilmsList from "./components/FilmsList.vue";
 import Header from "./components/Header.vue";
@@ -29,7 +30,7 @@ export default {
   }, */
   methods: {
     getNewSearch(query) {
-      const urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=en-US&page=1&query=${query}`;
+      const urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&languageit-IT&query=${query}`;
       axios
         .get(urlMovie)
         .then((result) => {

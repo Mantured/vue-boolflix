@@ -9,7 +9,7 @@
           placeholder="Search"
           v-model.trim="searchToInput"
           aria-label="Search"
-          @keyup.enter="$emit('searchInput', searchToInput)"
+          @keyup="$emit('searchInput', searchToInput)"
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </div>
