@@ -1,5 +1,5 @@
 <template>
-  <div class="card my-size mb-3" style="width: 18rem">
+  <div class="card my-size mb-3" style="width: 20rem">
     <img :src="imgUrl(info.poster_path)" class="card-img-top" alt="" />
     <!-- <img src="" class="card-img-top" alt="" /> -->
     <div class="card-body">
@@ -10,7 +10,8 @@
         <!-- {{ info.original_name }} -->
       </p>
       <country-flag :country="getFlag(info.original_language)" size="normal" />
-      <p class="card-text">{{ info.vote_average }}</p>
+      <p class="card-text">{{ voteInt(info.vote_average) }}</p>
+      <font-awesome-icon icon="fa-solid fa-star" />
     </div>
   </div>
 </template>
@@ -23,6 +24,7 @@ export default {
   },
   methods: {
     imgUrl(poster) {
+      // ? ricordarsi di inserire una condizione che se poster = null mettiamo le iniziali
       return `https://image.tmdb.org/t/p/w500/${poster}`;
     },
     getFlag(lang) {
@@ -32,6 +34,10 @@ export default {
       else if (lang === "ja") initials = "jp";
       else initials = lang;
       return initials;
+    },
+    voteInt(star) {
+      /* return console.log(Math.ceil(star)); */
+      return Math.ceil(star / 2);
     },
   },
 };
