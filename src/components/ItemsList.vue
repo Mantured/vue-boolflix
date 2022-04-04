@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid p-4 my-bg">
     <!-- <div v-if="films || series"> -->
     <div>
       <ul class="row">
@@ -30,6 +30,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.my-bg {
+  background-color: rgb(27, 27, 27);
+}
 li {
   list-style-type: none;
 }

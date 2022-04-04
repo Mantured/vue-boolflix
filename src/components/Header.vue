@@ -1,17 +1,25 @@
 <template>
   <nav class="navbar navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="https://www.netflix.com"
-        ><img src="../assets/images/netflix-logo.png" alt="Netflix Logo"
-      /></a>
-      <div>
-        <ul class="list-links">
-          <li v-for="(link, index) in links" :key="index">
-            <a href="#">{{ link.text }}</a>
-          </li>
-        </ul>
+    <div class="container-fluid h-100">
+      <div class="h-100 d-flex">
+        <a class="navbar-brand" href="https://www.netflix.com"
+          ><img src="../assets/images/netflix-logo.png" alt="Netflix Logo"
+        /></a>
+        <div class="links">
+          <ul class="list-links">
+            <li v-for="(link, index) in links" :key="index">
+              <a :class="{ active: link.active == true }" href="#">{{
+                link.text
+              }}</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="d-flex">
+        <!-- lens -->
+        <!-- Account -->
+        <!-- bell -->
+        <!-- img profile -->
         <input
           class="form-control me-2"
           type="search"
@@ -41,7 +49,7 @@ export default {
         },
         {
           text: "Tv Shows",
-          active: false,
+          active: true,
         },
         {
           text: "Movies",
@@ -60,6 +68,7 @@ export default {
           active: false,
         },
       ],
+      /* currentLinks: "Tv Shows", */
     };
   },
 };
@@ -68,21 +77,35 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .navbar {
+  height: 10vh;
   background-color: rgb(0, 0, 0);
   .navbar-brand {
+    height: 100%;
     img {
-      width: 250px;
-      height: 65px;
-      transform: scale(1.4);
+      height: 100%;
     }
   }
-  .list-links {
+  .links {
     display: flex;
     align-items: center;
-    list-style-type: none;
-    a {
-      text-decoration: none;
-      color: white;
+    height: 100%;
+    ul.list-links {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      li {
+        margin: 0;
+        margin-right: 0.6rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        a {
+          text-decoration: none;
+          color: grey;
+          &.active {
+            color: white;
+          }
+        }
+      }
     }
   }
 }

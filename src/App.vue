@@ -31,8 +31,8 @@ export default {
   }, */
   methods: {
     getNewSearch(query) {
-      const urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&languageit-IT&query=${query}`;
-      const urlTv = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.VUE_APP_APIKEY}&languageit-IT&query=${query}`;
+      const urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
+      const urlTv = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
       axios
         .get(urlMovie, urlTv)
         .then((result) => {
@@ -56,6 +56,6 @@ export default {
 <style lang="scss">
 @import "./assets/scss/style.scss";
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 </style>

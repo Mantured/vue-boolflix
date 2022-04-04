@@ -9,13 +9,13 @@
         Titolo originale : {{ info.original_title || info.original_name }}
         <!-- {{ info.original_name }} -->
       </p>
-      <country-flag :country="getFlag(info.original_language)" size="normal" />
+      <pre><country-flag :country="getFlag(info.original_language)" size="normal" /></pre>
       <span v-for="i in voteInt(info.vote_average)" :key="i + 'abc1'">
-        <font-awesome-icon class="yellow" icon="fa-solid fa-star" />
+        <font-awesome-icon class="yellow mb-3" icon="fa-solid fa-star" />
       </span>
       <!-- problema dopppia key -->
       <span v-for="n in 5 - voteInt(info.vote_average)" :key="n + 'abc2'">
-        <font-awesome-icon icon="fa-solid fa-star" />
+        <font-awesome-icon class="mb-3" icon="fa-solid fa-star" />
       </span>
       <p>{{ info.overview }}</p>
     </div>
@@ -63,10 +63,12 @@ export default {
   }
 }
 .card:hover .card-body {
-  display: block;
+  width: 100%;
   height: 100%;
-  background-color: rgb(20, 20, 20);
+  display: block;
   color: white;
+  overflow: auto;
+  background-color: rgb(20, 20, 20);
   .yellow {
     color: rgb(239, 212, 11);
   }
