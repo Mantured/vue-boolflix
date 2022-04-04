@@ -11,13 +11,14 @@
       </p>
       <country-flag :country="getFlag(info.original_language)" size="normal" />
       <p class="card-text">{{ voteInt(info.vote_average) }}</p>
-      <span v-for="(i, index) in voteInt(info.vote_average)" :key="index">
+      <span v-for="i in voteInt(info.vote_average)" :key="i + 'abc1'">
         <font-awesome-icon class="yellow" icon="fa-solid fa-star" />
       </span>
       <!-- problema dopppia key -->
-      <span v-for="n in 5 - voteInt(info.vote_average)" :key="n">
+      <span v-for="n in 5 - voteInt(info.vote_average)" :key="n + 'abc2'">
         <font-awesome-icon icon="fa-solid fa-star" />
       </span>
+      <p>{{ info.overview }}</p>
     </div>
   </div>
 </template>
@@ -31,7 +32,7 @@ export default {
   methods: {
     imgUrl(poster) {
       // ? ricordarsi di inserire una condizione che se poster = null mettiamo le iniziali
-      return `https://image.tmdb.org/t/p/w500/${poster}`;
+      return `https://image.tmdb.org/t/p/w342/${poster}`;
     },
     getFlag(lang) {
       let initials = "";
