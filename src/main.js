@@ -7,6 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import specific icons */
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -14,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 /* add icons to the library */
-library.add(faStar);
+library.add(faStar, faMagnifyingGlass);
 
 // flag import
 import CountryFlag from "vue-country-flag";

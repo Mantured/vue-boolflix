@@ -15,11 +15,7 @@
           </ul>
         </div>
       </div>
-      <div class="d-flex">
-        <!-- lens -->
-        <!-- Account -->
-        <!-- bell -->
-        <!-- img profile -->
+      <div class="d-flex align-items-center justify-content-between">
         <input
           class="form-control me-2"
           type="search"
@@ -28,7 +24,12 @@
           aria-label="Search"
           @keyup="$emit('searchInput', searchToInput)"
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+        <font-awesome-icon
+          class="btn text-white"
+          icon="fa-solid fa-magnifying-glass"
+          @click="$emit('searchInput', searchToInput)"
+        />
       </div>
     </div>
   </nav>
@@ -93,6 +94,7 @@ export default {
       display: flex;
       list-style-type: none;
       margin: 0;
+      padding: 0;
       li {
         margin: 0;
         margin-right: 0.6rem;
@@ -107,6 +109,9 @@ export default {
         }
       }
     }
+  }
+  input {
+    height: 30px;
   }
 }
 </style>

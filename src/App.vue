@@ -56,6 +56,8 @@ export default {
 <style lang="scss">
 @import "./assets/scss/style.scss";
 #app {
+  background-color: rgb(27, 27, 27);
   font-family: Helvetica, Arial, sans-serif;
+  height: 100vh;
 }
 </style>

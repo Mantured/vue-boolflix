@@ -1,8 +1,8 @@
 <template>
-  <div class="container-fluid p-4 my-bg">
+  <div class="container-fluid p-4">
     <!-- <div v-if="films || series"> -->
     <div>
-      <ul class="row">
+      <ul class="row overflow-auto flex-nowrap">
         <li class="col" v-for="(item, index) in films || series" :key="index">
           <!-- <li class="col" v-for="(item, index) in series" :key="index"> -->
           <!-- {{ film.title }} - {{ film.original_title }} - {{ film.vote_average }} -
@@ -30,9 +30,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.my-bg {
-  background-color: rgb(27, 27, 27);
-}
 li {
   list-style-type: none;
 }

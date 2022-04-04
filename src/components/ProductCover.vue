@@ -1,5 +1,5 @@
 <template>
-  <div class="card my-size mb-3 position-relative" style="width: 20rem">
+  <div class="card my-size mb-3 position-relative" style="width: 25rem">
     <img :src="imgUrl(info.poster_path)" class="card-img-top" alt="" />
     <!-- <img src="" class="card-img-top" alt="" /> -->
     <div class="card-body position-absolute">
@@ -55,6 +55,7 @@ export default {
 @import "../assets/scss/style.scss";
 .my-size {
   height: 70vh;
+  border: transparent;
   img {
     height: 100%;
   }
