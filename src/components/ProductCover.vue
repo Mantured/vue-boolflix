@@ -11,7 +11,13 @@
       </p>
       <country-flag :country="getFlag(info.original_language)" size="normal" />
       <p class="card-text">{{ voteInt(info.vote_average) }}</p>
-      <font-awesome-icon icon="fa-solid fa-star" />
+      <span v-for="(i, index) in voteInt(info.vote_average)" :key="index">
+        <font-awesome-icon class="yellow" icon="fa-solid fa-star" />
+      </span>
+      <!-- problema dopppia key -->
+      <span v-for="n in 5 - voteInt(info.vote_average)" :key="n">
+        <font-awesome-icon icon="fa-solid fa-star" />
+      </span>
     </div>
   </div>
 </template>
@@ -51,5 +57,8 @@ export default {
   img {
     height: 100%;
   }
+}
+.yellow {
+  color: rgb(239, 212, 11);
 }
 </style>
