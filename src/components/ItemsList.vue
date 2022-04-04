@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-4">
     <!-- <div v-if="films || series"> -->
-    <div>
+    <div class="d-flex">
       <ul class="row overflow-auto flex-nowrap">
         <li class="col" v-for="(item, index) in films || series" :key="index">
           <!-- <li class="col" v-for="(item, index) in series" :key="index"> -->
@@ -23,7 +23,7 @@ export default {
     ProductCover,
   },
   props: {
-    films: Array, //problemi di comunicazione //risolto
+    films: Array,
     series: Array,
   },
 };
@@ -31,6 +31,7 @@ export default {
 
 <style lang="scss" scoped>
 li {
+  padding: 0.2rem;
   list-style-type: none;
 }
 </style>

@@ -16,6 +16,9 @@
         </div>
       </div>
       <div class="d-flex align-items-center justify-content-between">
+        <select>
+          <option value=""></option>
+        </select>
         <input
           class="form-control me-2"
           type="search"
@@ -39,7 +42,9 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Header",
-  props: {},
+  props: {
+    genreMovie: Array,
+  },
   data: function () {
     return {
       searchToInput: "",

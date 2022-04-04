@@ -24,6 +24,7 @@ export default {
       filmsList: [],
       seriesLists: [],
       searchToInput: "",
+      genreMovie: [],
     };
   },
   /* created: function () {
@@ -38,7 +39,8 @@ export default {
         .then((result) => {
           this.filmsList = result.data.results;
           this.seriesLists = result.data.results;
-          console.log(this.filmsList);
+          /* this.genreMovie = result.data.genres.id; */
+          console.log(this.genreMovie);
           console.log(this.seriesLists);
           console.log(urlTv);
           console.log(urlMovie);
