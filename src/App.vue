@@ -22,9 +22,9 @@ export default {
     return {
       //moviesApi: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=en-US&page=1&query=`,
       filmsList: [],
+      genreMovie: [],
       seriesLists: [],
       searchToInput: "",
-      genreMovie: [],
     };
   },
   /* created: function () {
@@ -34,16 +34,19 @@ export default {
     getNewSearch(query) {
       const urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
       const urlTv = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
+      const urlGenre = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
+      /* const urlCast = `https://api.themoviedb.org/3/movie/353081/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`; */
       axios
-        .get(urlMovie, urlTv)
+        .get(urlMovie, urlTv, urlGenre)
         .then((result) => {
           this.filmsList = result.data.results;
           this.seriesLists = result.data.results;
-          /* this.genreMovie = result.data.genres.id; */
-          console.log(this.genreMovie);
-          console.log(this.seriesLists);
+          this.genreMovie = result.data.genre_ids;
           console.log(urlTv);
           console.log(urlMovie);
+          console.log(urlGenre);
+          /* console.log(urlCast); */
+          /* console.log(result.data.cast); */
         })
         .catch((error) => console.error(error));
     },

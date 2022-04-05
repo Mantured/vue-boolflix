@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-4">
     <!-- <div v-if="films || series"> -->
-    <div class="d-flex">
+    <div class="d-flex" v-if="films || series">
       <ul class="row overflow-auto flex-nowrap">
         <li class="col" v-for="(item, index) in films || series" :key="index">
           <!-- <li class="col" v-for="(item, index) in series" :key="index"> -->
@@ -11,7 +11,6 @@
         </li>
       </ul>
     </div>
-    <!-- <h1>Nessun Film trovato</h1> -->
   </div>
 </template>
 

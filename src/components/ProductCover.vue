@@ -23,10 +23,16 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "ProductCover",
   props: {
     info: Object,
+  },
+  data: function () {
+    return {
+      actorsList: [],
+    };
   },
   methods: {
     imgUrl(poster) {
@@ -46,6 +52,16 @@ export default {
       /* return console.log(Math.ceil(star)); */
       return Math.ceil(star / 2);
     },
+  },
+  created() {
+    const urlCast = `https://api.themoviedb.org/3/movie/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
+    axios
+      .get(urlCast)
+      .then((result) => {
+        this.actorsList = result.data.cast;
+        console.log(urlCast);
+      })
+      .catch((error) => console.error(error));
   },
 };
 </script>
