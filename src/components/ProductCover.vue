@@ -18,6 +18,8 @@
         <font-awesome-icon class="mb-3" icon="fa-solid fa-star" />
       </span>
       <p>{{ info.overview }}</p>
+      <p class="card-text">{{ getActors() }}</p>
+      <p>{{ info.id }}</p>
     </div>
   </div>
 </template>
@@ -31,6 +33,8 @@ export default {
   },
   data: function () {
     return {
+      /* actorsMovieList: [],
+      actorsSeriesList: [], */
       actorsList: [],
     };
   },
@@ -52,14 +56,26 @@ export default {
       /* return console.log(Math.ceil(star)); */
       return Math.ceil(star / 2);
     },
+    getActors() {
+      return (
+        /* this.actorsMovieList.map((actor) => actor.name) ||
+        this.actorsSeriesList.map((actor) => actor.name) */
+        this.actorsList.map((actor) => actor.name)
+      );
+    },
   },
   created() {
     const urlCast = `https://api.themoviedb.org/3/movie/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
+    const urlCastTv = `https://api.themoviedb.org/3/tv/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
     axios
-      .get(urlCast)
+      .get(urlCast, urlCastTv)
       .then((result) => {
         this.actorsList = result.data.cast;
+        /* this.actorsMovieList = result.data.cast;
+        this.actorsSeriesList = result.data.cast; */
         console.log(urlCast);
+        console.log(urlCastTv);
+        console.log(this.actorsMovieList);
       })
       .catch((error) => console.error(error));
   },
