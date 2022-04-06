@@ -22,7 +22,7 @@ export default {
     return {
       //moviesApi: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=en-US&page=1&query=`,
       filmsList: [],
-      genreMovie: [],
+
       seriesLists: [],
       searchToInput: "",
     };
@@ -32,19 +32,26 @@ export default {
   }, */
   methods: {
     getNewSearch(query) {
-      const urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
-      const urlTv = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
-      const urlGenre = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
+      let urlMovie;
+      let urlTv;
+      if (query === "") {
+        urlMovie = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&page=1`;
+        urlTv = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&page=1`;
+      } else {
+        urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
+        urlTv = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT&query=${query}`;
+      }
+      /* const urlGenre = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`; */
       /* const urlCast = `https://api.themoviedb.org/3/movie/353081/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`; */
       axios
-        .get(urlMovie, urlTv, urlGenre)
+        .get(urlMovie, urlTv)
         .then((result) => {
           this.filmsList = result.data.results;
           this.seriesLists = result.data.results;
           this.genreMovie = result.data.genre_ids;
           console.log(urlTv);
           console.log(urlMovie);
-          console.log(urlGenre);
+          /* console.log(urlGenre); */
           /* console.log(urlCast); */
           /* console.log(result.data.cast); */
         })

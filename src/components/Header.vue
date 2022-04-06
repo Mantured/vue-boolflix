@@ -17,7 +17,13 @@
       </div>
       <div class="d-flex align-items-center justify-content-between">
         <select>
-          <option value=""></option>
+          <option
+            v-for="(genre, index) in genreMovie"
+            :value="genre.id"
+            :key="index"
+          >
+            {{ genre.name }}
+          </option>
         </select>
         <input
           class="form-control me-2"
@@ -39,15 +45,17 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Header",
   props: {
-    genreMovie: Array,
+    /* genreMovie: Array, */
   },
   data: function () {
     return {
       searchToInput: "",
+      genreMovie: null,
       links: [
         {
           text: "Home",
@@ -76,6 +84,20 @@ export default {
       ],
       /* currentLinks: "Tv Shows", */
     };
+  },
+  created() {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`
+      )
+      .then((resp) => {
+        this.genreMovie = resp.data.genres.map((genre) => {
+          return {
+            id: genre.id,
+            name: genre.name,
+          };
+        });
+      });
   },
 };
 </script>

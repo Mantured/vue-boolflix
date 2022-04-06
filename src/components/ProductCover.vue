@@ -35,7 +35,7 @@ export default {
     return {
       /* actorsMovieList: [],
       actorsSeriesList: [], */
-      actorsList: [],
+      actor: null,
     };
   },
   methods: {
@@ -57,28 +57,31 @@ export default {
       return Math.ceil(star / 2);
     },
     getActors() {
-      return (
-        /* this.actorsMovieList.map((actor) => actor.name) ||
-        this.actorsSeriesList.map((actor) => actor.name) */
-        this.actorsList.map((actor) => actor.name)
-      );
+      return this.actor;
     },
   },
   created() {
-    const urlCast = `https://api.themoviedb.org/3/movie/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
-    const urlCastTv = `https://api.themoviedb.org/3/tv/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
+    //const urlCast = `https://api.themoviedb.org/3/movie/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`;
+    /* const urlCastTv = `https://api.themoviedb.org/3/tv/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`; */
     axios
-      .get(urlCast, urlCastTv)
+      .get(
+        `https://api.themoviedb.org/3/movie/${this.info.id}/credits?api_key=${process.env.VUE_APP_APIKEY}&language=it-IT`
+      )
       .then((result) => {
-        this.actorsList = result.data.cast;
+        this.actor = result.data.cast.slice(0, 5).map((actor) => {
+          return actor.name;
+        });
         /* this.actorsMovieList = result.data.cast;
         this.actorsSeriesList = result.data.cast; */
-        console.log(urlCast);
-        console.log(urlCastTv);
-        console.log(this.actorsMovieList);
-      })
-      .catch((error) => console.error(error));
+        /* console.log(urlCast); */
+        /* console.log(urlCastTv); */
+        console.log(this.info.id);
+        this.actor = this.actor.join(", ");
+      });
   },
+  /*   watch: {
+
+  } */
 };
 </script>
 
